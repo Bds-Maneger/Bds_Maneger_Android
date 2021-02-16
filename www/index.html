@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        if (localStorage.getItem("bds_ip-remote") === null){
+            localStorage.setItem("bds_ip-remote", prompt("Server address or IP", "localhost"))
+        } else if (confirm("do you want to change the address or IP")) {
+            localStorage.setItem("bds_ip-remote", prompt("Server address or IP", localStorage.getItem("bds_ip-remote")))
+        } else console.log(`IP or defined address: ${localStorage.getItem("bds_ip-remote")}`)
+
+        // TOKEN
+        if (localStorage.getItem("bds_token-remote") === null){
+            localStorage.setItem("bds_token-remote", prompt("token", undefined))
+        } else if (confirm("You want to change the Token")) {
+            localStorage.setItem("bds_token-remote", prompt("token", localStorage.getItem("bds_token-remote"))/**/)
+        } else console.log(`Token set for high access: ${localStorage.getItem("bds_token-remote")}`)
+    </script>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title id="title">null</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='assents/css/main.css'>
+</head>
+<body>
+    <div class="root" id="root_container">
+        <!-- Main Home -->
+        <div>
+            <p id="SystemProcess"></p>
+            <textarea class="logTEXT" disabled id="LOG"></textarea>
+            <input id="cmds" id="btn2" size="100%" placeholder="Command to send to server: /" class="commands" onkeydown="sendco(this)" type="text">
+            <input type="submit" value="null" id='comsen' onclick="sendcomand();return false">
+            <script>function sendco(ele){if(event.keyCode == 13) {document.getElementById("comsen").click()}}</script>
+        </div>
+        <div id="Info" class="modal">
+            <div class="modal-content">
+                <span class="infoclose">&times;</span>
+                <div class="info"><!--Infos-->
+                    <img src="https://raw.githubusercontent.com/Bds-Maneger/Bds-Maneger/main/bds_pages/assents/mcpe256x256.png" width="7%">
+                    <a>BDS MANEGER GUI &#9400;</a>
+                    <div class="mantedor"><!-- Lista de mantedores -->
+                        <a>Lista de Mantedores:</a>
+                        <p><a href="mailto:sirherobrine20@the-bds-maneger.org">Matheus Sampaio Queiroga (Sirherobrine23)</a></p>
+                    </div><!-- Lista de mantedores end-->
+                    <fieldset><!--Simples info-->
+                        <a>BDS Maneger Info:</a>
+                        <div class="info_after">
+                            <p>Bds Version: <span id="bds_version"></span></p>
+                            <div id="before_get_update"></div>
+                        </div>
+                    </fieldset><!--Simples info end-->
+                    <fieldset><!-- App Infos -->
+                        <a>Minecraft Server Info:</a>
+<!--                         <div class="info_after">
+                            <p>Latest Server Version: <script>document.write(localStorage.getItem('bds_server_latestV'))</script></p>
+                            <p>Local  Server Version: <script>document.write(localStorage.getItem('bds_server_version'))</script>(Baseado no downloads)</p>
+                        </div> -->
+                    </fieldset><!-- App Infos end-->
+                </div><!--Infos end-->
+            </div>
+        </div>
+        <!-- The Modal Info end -->
+    </div>
+    <!--End Root-->
+
+    <!-- The Modal Config Menu -->
+    <div id="configmodal" class="modal">
+        <div class="modal-content">
+            <span class="closeConfig">&times;</span>
+            <div class="config">
+
+                <span id="settings_fild">Minecraft Server Configurations</span>
+                <fieldset id="CConfig">
+                    <span id='drive_id_text'>What is the Google Drive (ID) folder: </span>
+                    <input value="undefined" id='drive_id' type="text"><input type="submit" onclick='setID();'>
+                    
+                    <br>
+                    <span id="bds-Server_download_text">Bedrock Server Download</span>
+                    <select id="bds-Server_download"></select><button onclick="DownloadBDS();">Download</button>
+                    <br>
+                    <span id="start_up">server when opening the Application: </span><label class="switch">
+                        <input id="autostart" type="checkbox" onclick="checkedBox();">
+                        <span class="slider round"></span>
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <fieldset>
+                        <span id="world_name">World name: </span><label><input type="text" placeholder="Word Name (Default Bedrock level)" id="level_name"></label><br>
+                        <span id="desc">Short Discription: </span><label for="name"><input placeholder="Description" type="text" id="name"></label><br>
+                        <span>Gamemode: </span><select id="gameMode">
+                            <option value="survival" id="surv">Survival</option>
+                            <option value="creative" id="crea">Creative</option>
+                            <option value="aventure" id="aven">Aventure</option>
+                        </select><br>
+                        <span>Difficulty: </span><select id="difficulty">
+                            <option value="easy" id="eas">Easy</option>
+                            <option value="normal" id="nor">Normal</option>
+                            <option value="hard" id="har">hard</option>
+                        </select><br>
+                        <span id="deafult_pl">Player default Permissions: </span><select id="permissions">
+                            <option value="visitor" id="vis">Visitor</option>
+                            <option value="member" id="mem">Member</option>
+                            <option value="operator" id="ope">Operator</option>
+                        </select><br>
+                        <span id="s_time_out">Time out Players not moved: </span><input disabled type="number" placeholder="Default 30 Minutes" id="timeout_server"><br>
+                        <span id="max_play">Maximum number of players: </span><input type="number" disabled placeholder="Default 10" min="1" id="max_pla">
+                        <br><br>
+                        <span id="sett_xb">Enable xbox Login: </span><label class="switch"><input type="checkbox" id="xbox"><span class="slider round"></span></label><br>
+                        <span id="sett_whi">Enable whitelist: </span><label class="switch"><input type="checkbox" id="whitelist"><span class="slider round"></span></label><br>
+                        <span id="sett_cheats">Allow Cheats: </span><label class="switch"><input type="checkbox" id="cheats"><span class="slider round"></span></label><br>
+
+                        <button onclick="setCONFIG();">Submit</button>
+                    </fieldset>
+                </fieldset>
+            <div>
+        </div>
+    </div>
+</body>
+<script src="./set_lang.js"></script>
+<div id="scr">
+    <script src="assents/js/modal.js"></script>
+    <script src="assents/js/setting_server.js"></script>
+    <script>
+        const themeMap = {
+            dark: "light",
+            light: "DarkColors",
+            DarkColors: "dark"};
+        const theme = localStorage.getItem('theme')||(tmp = Object.keys(themeMap)[0], localStorage.setItem('theme', tmp), tmp);
+        const bodyClass = document.body.classList;
+        bodyClass.add(theme);
+        function toggleTheme() {
+            const current = localStorage.getItem('theme');
+            const next = themeMap[current];
+            bodyClass.replace(current, next);
+            localStorage.setItem('theme', next);};
+        document.getElementById('themeButton').onclick = toggleTheme;
+    </script>
+    <!-- <script src="assents/js/setting_server.js"></script> -->
+    <script src="./bds.js"></script>
+</div>
+</html>
