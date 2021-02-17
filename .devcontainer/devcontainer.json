@@ -30,7 +30,9 @@
 		"aaron-bond.better-comments",
 		"msjsdiag.debugger-for-chrome",
 		"smcpeak.default-keys-windows",
-		"ritwickdey.liveserver"
+		"ritwickdey.liveserver",
+		"msjsdiag.cordova-tools",
+		"jewsofhazard.cordova-dev-essentials"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.

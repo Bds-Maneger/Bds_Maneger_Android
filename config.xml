@@ -8,6 +8,7 @@
         The Bds Maneger Project
     </author>
     <content src="index.html" />
+    <icon src="images/icon.png" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
