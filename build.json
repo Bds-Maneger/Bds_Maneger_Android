@@ -1,0 +1,19 @@
+{
+    "android": {
+        "debug": {
+            "keystore": "Bds-Android.keystore",
+            "alias": "",
+            "storePassword": "goo1234",
+            "password" : "goo1234",
+            "keystoreType": "",
+            "packageType": "apk"
+        },
+        "release": {
+            "keystore": "Bds-Android.keystore",
+            "storePassword": "goo1234",
+            "password" : "goo1234",
+            "keystoreType": "",
+            "packageType": "apk"
+        }
+    }
+}
